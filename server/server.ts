@@ -1,8 +1,9 @@
 import cors from 'cors'
 import 'dotenv/config'
-import express, {Request, Response} from 'express'
+import express, {NextFunction, Request, Response} from 'express'
 import httpStatus from 'http-status';
 import db from './db'
+import {convertToApiError, handleError, IError} from './middleware/apiError';
 import routes from './routes/router';
 import cookieParser from 'cookie-parser'
 
@@ -19,6 +20,11 @@ app.use(cookieParser())
 
 app.use('/', routes)
 app.get('/health', (req: Request, res: Response) => res.status(httpStatus.OK).send('OK'))
+
+//
+
+app.use(convertToApiError)
+app.use((err: IError, req: Request, res: Response, next: NextFunction) => handleError(err, res))
 
 //
 
