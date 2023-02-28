@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./",
-    "typeRoots": ["./types/global.d.ts", "./node_modules/@types"]
+    "typeRoots": [
+      "./types/environment.d.ts", "./node_modules/@types"]
   },
   "include": [
     "**.ts"

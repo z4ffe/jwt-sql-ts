@@ -2,6 +2,7 @@ import {DataTypes, InferAttributes, InferCreationAttributes, Model} from 'sequel
 import db from '../db'
 
 interface Users extends Model<InferAttributes<Users>, InferCreationAttributes<Users>> {
+   id?: number
    name: string
    email: string
    password: string
